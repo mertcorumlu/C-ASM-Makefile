@@ -6,7 +6,7 @@ NASM_FLAGS = -f elf64
 
 BUILD_PATH = build/
 
-PROGRAM = test
+PROGRAM = program
 
 C_SRC = $(shell find . -name "*.c")
 ASM_SRC = $(shell find . -name "*.asm")
