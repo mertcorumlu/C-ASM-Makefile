@@ -1,0 +1,41 @@
+#!/bin/bash
+dckr(){ 
+	docker run --rm -it -v $(pwd):/build gcc-env
+}
+
+mkfl(){
+	curl -O -s -q https://raw.githubusercontent.com/mertcorumlu/C-ASM-Makefile/main/Makefile 
+}
+
+STR="#include <stdio.h>
+
+int main(int argc, char const *argv[])
+{
+    printf(\"Hello\\\n\");
+    return 0;
+}"
+
+case $1 in
+
+	"init")
+	mkdir -p "src" && printf "$STR" > "src/main.c" &&
+	mkfl && dckr
+	;;
+
+	"docker")
+	dckr
+	;;
+
+	"makefile")
+	mkfl
+	;;
+
+	*)
+	printf "To use 'cproject [arg]'\n\n"
+	printf "____[arg]'s'____\n"
+	echo "init : create directory src, main.c in src; downloads Makefile and starts docker env"
+	echo "docker : starts docker env"
+	echo "makefile : downloads Makefile"
+	;;
+
+esac
