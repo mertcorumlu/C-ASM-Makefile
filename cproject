@@ -1,6 +1,6 @@
 #!/bin/bash
 dckr(){ 
-	docker run --rm -it -v $(pwd):/build gcc-env
+	docker run --rm -it -v $(pwd):/root/env --hostname ubuntu gcc-env
 }
 
 mkfl(){
