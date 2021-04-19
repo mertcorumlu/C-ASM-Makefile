@@ -4,7 +4,7 @@ dckr(){
 }
 
 mkfl(){
-	curl -O -s -q https://raw.githubusercontent.com/mertcorumlu/C-ASM-Makefile/main/Makefile 
+	wget -nc -q https://raw.githubusercontent.com/mertcorumlu/C-ASM-Makefile/main/Makefile 
 }
 
 STR="#include <stdio.h>
@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
 case $1 in
 
 	"init")
-	mkdir -p "src" && printf "$STR" > "src/main.c" &&
+	mkdir -p "src" && ( [ -f "src/main.c" ] || printf "$STR" > "src/main.c" );
 	mkfl && dckr
 	;;
 

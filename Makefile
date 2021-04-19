@@ -1,4 +1,4 @@
-CC = gcc
+CC = cc
 CC_FLAGS = 
 
 NASM = NASM
@@ -6,9 +6,9 @@ NASM_FLAGS = -f elf64
 
 BUILD_PATH = build/
 
-PROGRAM = test
+PROGRAM = program
 
-C_SRC = $(shell find . -name "*.c")
+C_SRC = $(shell find . -name "*.c" -o -name "*.S" -o -name "*.s")
 ASM_SRC = $(shell find . -name "*.asm")
 
 ASM_OBJ = $(ASM_SRC:./%.asm=$(BUILD_PATH)obj/%.o)
